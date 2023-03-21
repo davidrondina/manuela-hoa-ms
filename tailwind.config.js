@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
     content: [
         "./resources/**/*.blade.php",
@@ -6,7 +9,20 @@ module.exports = {
         "./resources/**/*.vue",
       ],
   theme: {
-    extend: {},
+    extend: {
+        backgroundColor: ({ theme }) => ({
+            // 'sidebar': defaultTheme.backgroundColor.bg-green-800,
+            // 'btn': theme('theme.backgroundColor.bg-green-700'),
+            'sidebar': 'rgb(22 101 52)',
+            'btn': 'rgb(22 101 61)',
+        }),
+        fontFamily: {
+            'karla': ['karla', 'sans-serif']
+        },
+        colors: {
+            'regal-blue': '#243c5a',
+        },
+    },
   },
   plugins: [],
 }
