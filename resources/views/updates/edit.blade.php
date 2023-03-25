@@ -76,13 +76,13 @@
                         </div>
                     </div>
 
-                    <div class="mb-6 flex items-center">
+                    <div class="mb-20 flex items-center">
                         <input type="checkbox" name="setToPublic" id="public" class="w-4 h-4 mr-1" {{ (!$update->is_private) ? 'checked' : ''}}>
                         <label for="public">Set the post to public</label>
                     </div>
 
-                    <div>
-                        <button class="w-full sm:w-auto bg-theme-green hover:bg-green-700 px-5 py-2.5 focus:ring-4 focus:ring-blue-300 text-white font-semibold shadow-md">Post</button>
+                    <div class="mb-6">
+                        <button class="w-full sm:w-auto bg-theme-green hover:bg-green-700 px-5 py-2.5 focus:ring-4 focus:ring-blue-300 text-white font-semibold shadow-md">Save changes</button>
                     </div>
                 </form>
             </main>

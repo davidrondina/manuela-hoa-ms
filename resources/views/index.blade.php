@@ -21,12 +21,11 @@
 
     <!-- NEWS -->
     <div class="py-7 px-5 sm:px-10">
-        <div class="text-2xl sm:text-3xl py-3 px-4 mb-5 bg-theme-green text-white font-semibold"> Updates</div>
+        <div class="text-2xl sm:text-3xl py-3 px-4 mb-5 bg-theme-green text-white font-semibold">Recent Updates</div>
 
+        @unless (count($updates) == 0)
         <div class="md:grid md:grid-cols-2 flex flex-col gap-5">
-
-            @unless (count($updates) == 0)
-                @foreach ($updates as $update)
+            @foreach ($updates as $update)
                 <div class="bg-white h-[1000px] max-h-[175px] flex border border-gray-300 shadow-lg">
                     <div class="w-1/2 h-full flex-initial overflow-hidden">
                         <img class="w-full h-full object-cover overflow-hidden" src="{{$update->image ? asset('storage/' . $update->image) : asset('/images/news.jpg')}}" alt="">
@@ -40,6 +39,16 @@
                         </ul>
                     </div>
                 </div>
+            @endforeach
+        </div>
+
+        @else
+
+        <div class="w-full h-[1000px] max-h-[300px] flex justify-center items-center">
+            <span class="text-4xl text-gray-500 font-semibold">There are no posts yet.</span>
+        </div>
+
+        @endunless
                 {{-- <div class="bg-white h-[1000px] max-h-[215px] sm:max-h-[175px] flex border-2">
                     <div class="w-full h-2/5 max-h-[40%] sm:h-full sm:max-h-full flex-initial">
                         <img class="w-full h-auto" src="{{asset('/images/news.jpg')}}" alt="">
@@ -53,8 +62,8 @@
                     </ul>
                     </div>
                 </div> --}}
-                @endforeach
-            @endunless
+
+
             {{-- <div class="bg-white h-[1000px] max-h-[215px] sm:max-h-[175px] flex flex-col sm:flex-row">
                 <div class="w-full h-2/5 max-h-[40%] sm:h-full sm:max-h-full flex-initial">
                     <img class="w-full h-full" src="{{asset('/images/news.jpg')}}" alt="">
