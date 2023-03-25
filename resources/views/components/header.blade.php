@@ -1,5 +1,5 @@
 <!-- Mobile Header -->
-<header x-data="{ isOpen: false }" class="z-10 w-full py-5 px-6  bg-sidebar text-white md:hidden shadow-lg fixed">
+<header x-data="{ isOpen: false }" class="z-10 w-full py-5 px-6  bg-theme-green text-white md:hidden shadow-lg fixed">
     <div class="flex items-center justify-between">
         <a href="#" class="block font-semibold uppercase hover:text-gray-300">Manuela Homes Subdivision</a>
         <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
@@ -26,7 +26,7 @@
 </header>
 
 <!-- Desktop Header -->
-<header class="z-10 w-full py-2 px-6 sm:px-10 bg-sidebar text-white hidden md:flex md:justify-between shadow-lg fixed">
+<header class="z-10 w-full py-2 px-6 sm:px-10 bg-theme-green text-white hidden md:flex md:justify-between shadow-lg fixed">
     <div class="w-auto flex items-center justify-between">
         <a href="#" class="block font-semibold uppercase hover:text-gray-300">Manuela Homes Subdivision</a>
     </div>

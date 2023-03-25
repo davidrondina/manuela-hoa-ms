@@ -7,13 +7,20 @@
     <title>Document</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
-<body class="bg-gray-200 font-karla">
+<body class="bg-gray-100 font-karla">
     {{-- <h1 class="text-3xl font-bold underline">
         Hello world!
     </h1>
     <div class="text-sm font-bold">Hello</div> --}}
     {{$slot}}
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
     {{-- Alpine JS --}}
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
