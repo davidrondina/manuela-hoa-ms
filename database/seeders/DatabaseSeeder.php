@@ -18,7 +18,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'user_type' => 'admin'
+        ]);
+
+        User::factory()->create([
+            'user_type' => 'regular'
+        ]);
 
         Update::factory(7)->create([
             'user_id' => $user->id

@@ -4,6 +4,7 @@ use App\Models\Update;
 
 // Controllers
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UpdatesController;
 
 
@@ -20,7 +21,7 @@ use App\Http\Controllers\UpdatesController;
 
 Route::get('/', function() {
     return view('index', [
-        'updates' => Update::latest()->paginate(6)
+        'updates' => Update::where('is_private', false)->paginate(6)
     ]);
 });
 
@@ -37,6 +38,10 @@ Route::get('/updates/{update}/edit', [UpdatesController::class, 'edit']);
 
 Route::put('/updates/{update}', [UpdatesController::class, 'update']);
 
-Route::get('/guest/updates', []);
 
-Route::get('/guest/updates/{id}', []);
+Route::get('/login', [UserController::class, 'login']);
+
+
+// Route::get('/guest/updates', []);
+
+// Route::get('/guest/updates/{id}', []);
