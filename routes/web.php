@@ -1,6 +1,11 @@
 <?php
 
+use App\Models\Update;
+
+// Controllers
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UpdatesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', function() {
+    return view('index', [
+        'updates' => Update::latest()->paginate(6)
+    ]);
 });
+
+Route::get('/updates', [UpdatesController::class, 'index']);
+
+Route::get('/updates/create', [UpdatesController::class, 'create']);
+
+// Route::get('/updates/{id}', [UpdatesController::class, 'show']);
+Route::get('/updates/{update}', [UpdatesController::class, 'show']);
+
+Route::post('/updates', [UpdatesController::class, 'store']);
+
+Route::get('/updates/{update}/edit', [UpdatesController::class, 'edit']);
+
+Route::put('/updates/{update}', [UpdatesController::class, 'update']);
+
+Route::get('/guest/updates', []);
+
+Route::get('/guest/updates/{id}', []);
