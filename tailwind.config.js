@@ -13,8 +13,8 @@ module.exports = {
         backgroundColor: ({ theme }) => ({
             // 'sidebar': defaultTheme.backgroundColor.bg-green-800,
             // 'btn': theme('theme.backgroundColor.bg-green-700'),
-            'sidebar': 'rgb(22 101 52)',
-            'btn': 'rgb(22 101 61)',
+            'theme-green': 'rgb(22 101 52)',
+            'theme-light-green': 'rgb(22 101 61)',
         }),
         fontFamily: {
             'karla': ['karla', 'sans-serif']
