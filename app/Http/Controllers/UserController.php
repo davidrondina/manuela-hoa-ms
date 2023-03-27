@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function login() {
-        return view('users.login');
+        return view('login');
     }
 
     public function authenticate(Request $request) {

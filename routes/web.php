@@ -53,11 +53,6 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout']);
 
 
-// Guest Routes
-// Route::get('/guest/updates', [GuestController::class, 'index'])->middleware('guest');
-
-// Route::get('/guest/updates/{update}', [GuestController::class, 'show'])->middleware('guest');
-
 Route::middleware(['guest'])->group(function() {
     Route::get('/guest/updates', [GuestController::class, 'index']);
     Route::get('/guest/updates/{update}', [GuestController::class, 'show']);
