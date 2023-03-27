@@ -2,6 +2,9 @@
 <header class="w-full justify-end items-center bg-white py-2 px-6 hidden sm:flex">
     <div x-data="{ isOpen: false }" class="relative flex justify-end items-center">
         <div class="flex items-center">
+            @auth
+                <span>Logged In</span>
+            @endauth
             <button @click="isOpen = !isOpen" class="relative z-10 h-12 mr-3 px-3 rounded-lg overflow-hidden hover:bg-gray-300 focus:bg-gray-300 focus:outline-none">
                 <i class="fas fa-angle-down mr-3"></i>
                 Admin
@@ -13,7 +16,14 @@
         <div x-show="isOpen" class="absolute top-0 w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
             <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
             <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
-            <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
+
+            <form action="/logout" method="POST">
+                @csrf
+
+                <button class="px-4 py-2">
+                    <i class="fas fa-door-closed"></i> Logout
+                </button>
+            </form>
         </div>
     </div>
 </header>

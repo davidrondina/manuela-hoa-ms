@@ -2,12 +2,8 @@
     <x-header />
 
     <main>
-        {{-- <h1 class="bg-sidebar text-3xl font-bold underline font-karla uppercase">
-            Hello world!
-        </h1>
-        <div class="bg-sidebar text-sm font-bold">Hello</div> --}}
     <!-- HERO IMAGE -->
-    <div class="h-[480px] sm:h-[350px] text-white bg-cover bg-no-repeat sm:bg-right-bottom" style="background-image: url('/images/banner.jpg');">
+    <div class="h-[450px] sm:h-[350px] text-white bg-cover bg-no-repeat sm:bg-right-bottom" style="background-image: url('/images/banner.jpg');">
         <div class="h-full mb-5 py-7 px-5 sm:px-10 flex flex-col justify-end space-y-4 bg-black/60 overflow-hidden">
             <h1 class="w-auto text-5xl font-semibold overflow-hidden"
                 data-aos="fade-up"
@@ -26,19 +22,35 @@
         @unless (count($updates) == 0)
         <div class="md:grid md:grid-cols-2 flex flex-col gap-5">
             @foreach ($updates as $update)
-                <div class="bg-white h-[1000px] max-h-[175px] flex border border-gray-300 shadow-lg">
-                    <div class="w-1/2 h-full flex-initial overflow-hidden">
-                        <img class="w-full h-full object-cover overflow-hidden" src="{{$update->image ? asset('storage/' . $update->image) : asset('/images/news.jpg')}}" alt="">
+                @auth
+                    <div class="bg-white h-[1000px] max-h-[175px] flex border border-gray-300 shadow-lg">
+                        <div class="w-1/2 h-full flex-initial overflow-hidden">
+                            <img class="w-full h-full object-cover overflow-hidden" src="{{$update->image ? asset('storage/' . $update->image) : asset('/images/news.jpg')}}" alt="">
+                        </div>
+                        <div class="w-1/2 h-full sm:px-4 px-2 py-3 overflow-hidden flex-initial md:text-lg">
+                            <a href="/updates/{{$update->id}}" class="h-3/4 flex hover:underline font-semibold mb-3">{{$update->title}}</a>
+                            <ul class="h-auto flex flex-wrap gap-2 overflow-x-auto">
+                                <li class="bg-theme-green h-auto rounded-xl px-3 py-1 text-xs flex text-white"><a href="#">Tag 1</a></li>
+                                <li class="bg-theme-green h-auto rounded-xl px-3 py-1 text-xs flex text-white"><a href="#">Tag 2</a></li>
+                                <li class="bg-theme-green h-auto rounded-xl px-3 py-1 text-xs flex text-white"><a href="#">Tag 3</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="w-1/2 h-full sm:px-4 px-2 py-3 overflow-hidden flex-initial md:text-lg">
-                        <a href="#" class="h-3/4 flex hover:underline font-semibold mb-3">{{$update->title}}</a>
-                        <ul class="h-auto flex flex-wrap gap-2 overflow-x-auto">
-                            <li class="bg-theme-green h-auto rounded-xl px-3 py-1 text-xs flex text-white"><a href="#">Tag 1</a></li>
-                            <li class="bg-theme-green h-auto rounded-xl px-3 py-1 text-xs flex text-white"><a href="#">Tag 2</a></li>
-                            <li class="bg-theme-green h-auto rounded-xl px-3 py-1 text-xs flex text-white"><a href="#">Tag 3</a></li>
-                        </ul>
+                @else
+                    <div class="bg-white h-[1000px] max-h-[175px] flex border border-gray-300 shadow-lg">
+                        <div class="w-1/2 h-full flex-initial overflow-hidden">
+                            <img class="w-full h-full object-cover overflow-hidden" src="{{$update->image ? asset('storage/' . $update->image) : asset('/images/news.jpg')}}" alt="">
+                        </div>
+                        <div class="w-1/2 h-full sm:px-4 px-2 py-3 overflow-hidden flex-initial md:text-lg">
+                            <a href="/guest/updates/{{$update->id}}" class="h-3/4 flex hover:underline font-semibold mb-3">{{$update->title}}</a>
+                            <ul class="h-auto flex flex-wrap gap-2 overflow-x-auto">
+                                <li class="bg-theme-green h-auto rounded-xl px-3 py-1 text-xs flex text-white"><a href="#">Tag 1</a></li>
+                                <li class="bg-theme-green h-auto rounded-xl px-3 py-1 text-xs flex text-white"><a href="#">Tag 2</a></li>
+                                <li class="bg-theme-green h-auto rounded-xl px-3 py-1 text-xs flex text-white"><a href="#">Tag 3</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                @endauth
             @endforeach
         </div>
 
@@ -49,36 +61,8 @@
         </div>
 
         @endunless
-                {{-- <div class="bg-white h-[1000px] max-h-[215px] sm:max-h-[175px] flex border-2">
-                    <div class="w-full h-2/5 max-h-[40%] sm:h-full sm:max-h-full flex-initial">
-                        <img class="w-full h-auto" src="{{asset('/images/news.jpg')}}" alt="">
-                    </div>
-                    <div class="w-full h-3/5 max-h-[60%] sm:h-full sm:max-h-full sm:px-4 px-2 py-3 overflow-hidden flex-initial text-sm sm:text-base md:text-lg">
-                    <a href="#" class="flex hover:underline font-semibold mb-3">{{$update->title}}</a>
-                    <ul class="flex overflow-x-auto">
-                        <li class="bg-sidebar rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 1</a></li>
-                        <li class="bg-sidebar rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 2</a></li>
-                        <li class="bg-sidebar rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 3</a></li>
-                    </ul>
-                    </div>
-                </div> --}}
 
-
-            {{-- <div class="bg-white h-[1000px] max-h-[215px] sm:max-h-[175px] flex flex-col sm:flex-row">
-                <div class="w-full h-2/5 max-h-[40%] sm:h-full sm:max-h-full flex-initial">
-                    <img class="w-full h-full" src="{{asset('/images/news.jpg')}}" alt="">
-                </div>
-                <div class="w-full h-3/5 max-h-[60%] sm:h-full sm:max-h-full sm:px-4 px-2 py-3 overflow-hidden flex-initial text-sm sm:text-base">
-                <a href="#" class="flex hover:underline mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore tenetur dolorum dolore magnam hic quia!</a>
-                <ul class="flex overflow-x-auto">
-                    <li class="bg-sidebar rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 1</a></li>
-                    <li class="bg-sidebar rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 2</a></li>
-                    <li class="bg-sidebar rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 3</a></li>
-                </ul>
-                </div>
-            </div> --}}
-
-        <!-- <div class="text-md text-center mt-6"><a href="#" class="hover:underline">View more</a></div> -->
+        <div class="text-md text-center mt-12"><a href="/guest/updates" class="w-full sm:w-auto cta-btn focus:ring-4 focus:ring-blue-300 shadow-md">View more</a></div>
         </div>
     </div>
 

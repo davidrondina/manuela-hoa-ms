@@ -5,6 +5,7 @@ use App\Models\Update;
 // Controllers
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\UpdatesController;
 
 
@@ -19,12 +20,15 @@ use App\Http\Controllers\UpdatesController;
 |
 */
 
+// Home
 Route::get('/', function() {
     return view('index', [
-        'updates' => Update::where('is_private', false)->paginate(6)
+        'updates' => Update::where('is_private', false)->latest()->paginate(6)
     ]);
 });
 
+
+// Updates
 Route::get('/updates', [UpdatesController::class, 'index']);
 
 Route::get('/updates/create', [UpdatesController::class, 'create']);
@@ -38,10 +42,23 @@ Route::get('/updates/{update}/edit', [UpdatesController::class, 'edit']);
 
 Route::put('/updates/{update}', [UpdatesController::class, 'update']);
 
+Route::delete('/updates/{update}', [UpdatesController::class, 'destroy']);
 
+
+// User Authentication, Login, and Logout
 Route::get('/login', [UserController::class, 'login']);
 
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
-// Route::get('/guest/updates', []);
+Route::post('/logout', [UserController::class, 'logout']);
 
-// Route::get('/guest/updates/{id}', []);
+
+// Guest Routes
+// Route::get('/guest/updates', [GuestController::class, 'index'])->middleware('guest');
+
+// Route::get('/guest/updates/{update}', [GuestController::class, 'show'])->middleware('guest');
+
+Route::middleware(['guest'])->group(function() {
+    Route::get('/guest/updates', [GuestController::class, 'index']);
+    Route::get('/guest/updates/{update}', [GuestController::class, 'show']);
+});

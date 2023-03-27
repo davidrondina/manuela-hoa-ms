@@ -24,20 +24,20 @@
                                 <a href="/updates/{{$update->id}}"><img class="w-full h-full object-cover" src="{{$update->image ? asset('storage/' . $update->image) : asset('/images/news.jpg')}}" alt=""></a>
                             </div>
                             <div class="w-3/5 sm:w-[70%] h-full sm:px-4 px-2 py-3 overflow-hidden flex-initial text-lg sm:text-xl">
-                            <a href="/updates/{{$update->id}}" class="h-2/4 flex hover:underline font-semibold">{{$update->title}}</a>
-                            {{-- <span class="text-sm text-gray-500">{{$update->created_at}}</span> --}}
-                            <ul class="flex mt-2">
-                                <li class="bg-theme-green rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 1</a></li>
-                                <li class="bg-theme-green rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 2</a></li>
-                                <li class="bg-theme-green rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 3</a></li>
+                                <a href="/updates/{{$update->id}}" class="h-2/4 flex hover:underline font-semibold">{{$update->title}}</a>
 
-                                @if ($update->is_private)
-                                    <li class="bg-theme-green rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Private</a></li>
+                                <ul class="flex mt-2">
+                                    <li class="bg-theme-green rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 1</a></li>
+                                    <li class="bg-theme-green rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 2</a></li>
+                                    <li class="bg-theme-green rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Tag 3</a></li>
 
-                                @else
-                                    <li class="bg-theme-green rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Public</a></li>
-                                @endif
-                            </ul>
+                                    @if ($update->is_private)
+                                        <li class="bg-theme-green rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Private</a></li>
+
+                                    @else
+                                        <li class="bg-theme-green rounded-xl px-3 py-1 mr-2 text-xs flex text-white"><a href="#">Public</a></li>
+                                    @endif
+                                </ul>
                             </div>
                         </div>
                         @endforeach

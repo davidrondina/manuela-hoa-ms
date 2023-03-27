@@ -22,8 +22,16 @@ class DatabaseSeeder extends Seeder
             'user_type' => 'admin'
         ]);
 
+        // User with id 2
         User::factory()->create([
+            'password' => bcrypt('1234'),
             'user_type' => 'regular'
+        ]);
+
+        // User with id 3
+        User::factory()->create([
+            'password' => bcrypt('1234'),
+            'user_type' => 'admin'
         ]);
 
         Update::factory(7)->create([
