@@ -31,6 +31,73 @@
                 </div>
             </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="h-screen flex items-center">
+            <form action="/users/authenticate" method="POST">
+                @csrf
+
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="w-64 p-2 border border-gray-300" value="{{ old('email') }}" class="border border-gray-300" />
+
+                    @error('email')
+                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="w-64 p-2 border border-gray-300" value="{{ old('password') }}" class="border border-gray-300" />
+
+                    @error('password')
+                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                    @enderror
+                </div>
+
+                <button class="bg-theme-green">Login</button>
+            </form>
         </div>
     </main>
 
