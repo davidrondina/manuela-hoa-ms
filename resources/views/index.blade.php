@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="md:w-2/5 sm:w-1/2">
+            <div class="bg-white md:w-[45%] sm:w-1/2 p-6 shadow-lg">
                 <!-- <span class="block before:content-['*'] after:mr-1 before:text-red-500 mb-3 italic">Indicates required field</span> -->
                 <x-contact-form />
             </div>

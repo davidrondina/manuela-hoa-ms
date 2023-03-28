@@ -21,6 +21,8 @@ module.exports = {
         },
         colors: {
             'regal-blue': '#243c5a',
+            'theme-green': 'rgb(22 101 52)',
+            'theme-light-green': 'rgb(22 101 61)',
         },
     },
   },
