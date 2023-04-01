@@ -1,6 +1,39 @@
 <x-layout>
     <div class="flex">
-        <x-sidebar />
+        <x-sidebar>
+            <a href="/updates" class="flex items-center text-white active-nav-link py-4 pl-6">
+                <i class="fas fa-bullhorn mr-3"></i>
+                Updates
+            </a>
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-user mr-3"></i>
+                Members
+            </a>
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-table mr-3"></i>
+                Transactions
+            </a>
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-comments mr-3"></i>
+                Forum
+            </a>
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-vote-yea mr-3"></i>
+                Voting
+            </a>
+            {{-- <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-calendar mr-3"></i>
+                Calendar
+            </a> --}}
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-balance-scale mr-3"></i>
+                Rules
+            </a>
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-envelope mr-3"></i>
+                Feedback
+            </a>
+        </x-sidebar>
 
     <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
         <x-dashboard-header />
@@ -9,9 +42,14 @@
             <main class="w-full flex-grow py-6 px-6 sm:px-10">
                 <div class="flex justify-between items-center flex-wrap">
                     <h1 class="text-3xl text-black font-semibold">Updates</h1>
-                    <div>
-                        <a href="/updates/create" class="text-white bg-theme-green focus:ring-4 focus:ring-blue-300 font-semibold px-5 py-2.5 shadow-md"><i class="fas fa-plus"></i> Create</a>
-                    </div>
+
+                    @auth
+                        @if (auth()->user()->user_type == 'admin')
+                            <div>
+                                <a href="/updates/create" class="text-white bg-theme-green focus:ring-4 focus:ring-blue-300 font-semibold px-5 py-2.5 shadow-md"><i class="fas fa-plus"></i> Create</a>
+                            </div>
+                        @endif
+                    @endauth
                 </div>
 
                 <!-- ANNOUNCEMENT POSTS -->

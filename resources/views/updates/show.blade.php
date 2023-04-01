@@ -1,6 +1,35 @@
 <x-layout>
     <div class="flex">
-        <x-sidebar />
+        <x-sidebar>
+            <a href="/updates" class="flex items-center text-white active-nav-link py-4 pl-6">
+                <i class="fas fa-bullhorn mr-3"></i>
+                Updates
+            </a>
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-user mr-3"></i>
+                Members
+            </a>
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-table mr-3"></i>
+                Transactions
+            </a>
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-comment-dots mr-3"></i>
+                Forum
+            </a>
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-vote-yea mr-3"></i>
+                Voting
+            </a>
+            {{-- <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-calendar mr-3"></i>
+                Calendar
+            </a> --}}
+            <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6">
+                <i class="fas fa-balance-scale mr-3"></i>
+                Rules
+            </a>
+        </x-sidebar>
 
         <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
             <x-dashboard-header />
@@ -12,7 +41,7 @@
                     <article class="w-full sm:w-3/4 mb-12">
                         <div class="mb-4 space-y-3">
                             <div class="flex justify-between">
-                                <h1 class="text-3xl text-black font-semibold">{{$update->title}} User type: {{ auth()->user()->user_type }}</h1>
+                                <h1 class="text-3xl text-black font-semibold">{{$update->title}}</h1>
 
                                 @auth
                                     @if (auth()->user()->user_type == 'admin')
@@ -45,7 +74,7 @@
                             <img class="w-full h-full object-cover border border-gray-300" src="{{$update->image ? asset('storage/' . $update->image) : asset('/images/news.jpg')}}" alt="">
                         </div>
 
-                        <div class="whitespace-pre-wrap">{{$update->body}}</div>
+                        <div class="whitespace-pre-wrap">{!! $update->body !!}</div>
                     </article>
                 </main>
 
