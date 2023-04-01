@@ -37,6 +37,7 @@ class UpdatesController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->body);
         // dd($request->has('setToPublic') ? true : false);
 
         $formFields = $request->validate([

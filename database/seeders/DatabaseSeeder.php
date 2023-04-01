@@ -28,14 +28,15 @@ class DatabaseSeeder extends Seeder
             'user_type' => 'regular'
         ]);
 
-        // User with id 3
+        // User with id 3 (admin)
         User::factory()->create([
+            'email' => 'admin@email.com',
             'password' => bcrypt('1234'),
             'user_type' => 'admin'
         ]);
 
         Update::factory(7)->create([
-            'user_id' => $user->id
+            'user_id' => 3
         ]);
     }
 }
