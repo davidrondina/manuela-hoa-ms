@@ -1,10 +1,10 @@
 <!-- Desktop Header -->
-<header class="w-full justify-end items-center bg-white py-2 px-6 hidden sm:flex">
+<header class="w-full justify-end items-center bg-white py-2 px-6 hidden shadow-lg sm:flex">
     <div x-data="{ isOpen: false }" class="relative flex justify-end items-center">
         <div class="flex items-center">
-            @auth
+            {{-- @auth
                 <span>Logged In</span>
-            @endauth
+            @endauth --}}
             <button @click="isOpen = !isOpen" class="relative z-10 h-12 mr-3 px-3 rounded-lg overflow-hidden hover:bg-gray-300 focus:bg-gray-300 focus:outline-none">
                 <i class="fas fa-angle-down mr-3"></i>
                 Admin
@@ -13,14 +13,13 @@
         </div>
 
         <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
-        <div x-show="isOpen" class="absolute top-0 w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
-            <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
-            <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
+        <div x-show="isOpen" class="absolute top-0 right-7 w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
+            <a href="#" class="block px-4 py-2 hover:bg-theme-light-green hover:text-white"><i class="fas fa-user-circle"></i> Account</a>
 
             <form action="/logout" method="POST">
                 @csrf
 
-                <button class="px-4 py-2">
+                <button class="w-full px-4 py-2 text-left hover:bg-theme-light-green hover:text-white">
                     <i class="fas fa-door-closed"></i> Logout
                 </button>
             </form>
@@ -60,21 +59,21 @@
             <i class="fas fa-vote-yea mr-3"></i>
             Voting
         </a>
-        <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+        {{-- <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-calendar mr-3"></i>
             Calendar
-        </a>
+        </a> --}}
         <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-balance-scale mr-3"></i>
             Rules
         </a>
-        <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+        {{-- <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-cogs mr-3"></i>
             Support
-        </a>
+        </a> --}}
         <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-user mr-3"></i>
-            My Account
+            <i class="fas fa-user-circle mr-3"></i>
+            Account
         </a>
         <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-sign-out-alt mr-3"></i>

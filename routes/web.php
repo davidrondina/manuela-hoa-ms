@@ -23,36 +23,37 @@ use App\Http\Controllers\UpdatesController;
 // Home
 Route::get('/', function() {
     return view('index', [
-        'updates' => Update::where('is_private', false)->latest()->paginate(6)
+        'updates' => Update::where('is_private', false)->latest()->take(6)->get()
     ]);
 });
 
 
 // Updates
-Route::get('/updates', [UpdatesController::class, 'index']);
+Route::get('/updates', [UpdatesController::class, 'index'])->middleware('auth');
 
-Route::get('/updates/create', [UpdatesController::class, 'create']);
+Route::get('/updates/create', [UpdatesController::class, 'create'])->middleware('auth');
 
 // Route::get('/updates/{id}', [UpdatesController::class, 'show']);
-Route::get('/updates/{update}', [UpdatesController::class, 'show']);
+Route::get('/updates/{update}', [UpdatesController::class, 'show'])->middleware('auth');
 
-Route::post('/updates', [UpdatesController::class, 'store']);
+Route::post('/updates', [UpdatesController::class, 'store'])->middleware('auth');
 
-Route::get('/updates/{update}/edit', [UpdatesController::class, 'edit']);
+Route::get('/updates/{update}/edit', [UpdatesController::class, 'edit'])->middleware('auth');
 
-Route::put('/updates/{update}', [UpdatesController::class, 'update']);
+Route::put('/updates/{update}', [UpdatesController::class, 'update'])->middleware('auth');
 
-Route::delete('/updates/{update}', [UpdatesController::class, 'destroy']);
+Route::delete('/updates/{update}', [UpdatesController::class, 'destroy'])->middleware('auth');
 
 
 // User Authentication, Login, and Logout
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('login');
 
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 
+// Guest Routes
 Route::middleware(['guest'])->group(function() {
     Route::get('/guest/updates', [GuestController::class, 'index']);
     Route::get('/guest/updates/{update}', [GuestController::class, 'show']);

@@ -62,7 +62,13 @@
 
         @endunless
 
-        <div class="text-md text-center mt-12"><a href="/guest/updates" class="w-full sm:w-auto cta-btn focus:ring-4 focus:ring-blue-300 shadow-md">View more</a></div>
+        <div class="text-md text-center mt-12">
+            @auth
+                <a href="/updates" class="w-full sm:w-auto cta-btn focus:ring-4 focus:ring-blue-300 shadow-md">View more</a>
+
+            @else
+                <a href="/guest/updates" class="w-full sm:w-auto cta-btn focus:ring-4 focus:ring-blue-300 shadow-md">View more</a>
+            @endauth
         </div>
     </div>
 
@@ -75,16 +81,22 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247385.65029262088!2d120.7428860488076!3d14.34620233402327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d1ec5a1ee9ad%3A0x94660635847472b8!2sManuela%20Homes%20Subd.!5e0!3m2!1sen!2sph!4v1678357190861!5m2!1sen!2sph" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[300px] mb-5 sm:mr-5"></iframe>
 
                 <div>
-                    <span class="mb-5 block">For inquires, you may contact or visit us:</span>
+                    <span class="mb-5 block">For inquires and feedbacks, you may contact or visit us:</span>
                     <ul>
-                        <li>Block 1 Lot 8-B, Diamond St., Manuela Homes, Talon 5</li>
-                        <li>Las Piñas City</li>
-                        <li>(012) 345 6789</li>
+                        <li class="font-semibold">
+                            Address
+                            <li>Block 1 Lot 8-B, Diamond St., Manuela Homes, Talon 5</li>
+                            <li>Las Piñas City</li>
+                        </li>
+                        <li class="mt-3 font-semibold">
+                            Contact No.
+                            <li>(012) 345 6789</li>
+                        </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="bg-white md:w-[45%] sm:w-1/2 p-6 shadow-lg">
+            <div class="bg-white md:w-[45%] h-auto p-6 shadow-lg">
                 <!-- <span class="block before:content-['*'] after:mr-1 before:text-red-500 mb-3 italic">Indicates required field</span> -->
                 <x-contact-form />
             </div>
@@ -93,4 +105,6 @@
     </main>
 
     <x-footer />
+
+    @stack('scripts')
 </x-layout>

@@ -15,7 +15,7 @@
                     <!--Email-->
                     <div class="mt-2">
                         <label for="email" class="block text-base mb-2">Email</label>
-                        <input type="text" name="email" id="email" value="{{ old('email') }}" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:theme-green" placeholder="Enter your email address" />
+                        <input type="text" name="email" id="email" value="{{ old('email') }}" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-theme-green" placeholder="Enter your email address" />
 
                         @error('email')
                             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -24,7 +24,7 @@
                     <!--Password-->
                     <div class="mt-2">
                         <label for="password" class="block text-base mb-2">Password</label>
-                        <input type="password" name="password" id="password" value="{{ old('password') }}" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:theme-green" placeholder="Enter your password"/>
+                        <input type="password" name="password" id="password" value="{{ old('password') }}" class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-theme-green" placeholder="Enter your password"/>
 
                         @error('password')
                             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
